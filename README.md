@@ -27,6 +27,7 @@ knowledgebase/
 │   ├── SOURCES_AND_REFERENCES.md          # Source ingestion guide (LevantC & external refs)
 │   ├── CUSTOMIZATION_PILLARS.md           # Strategic customization roadmap & pillars
 │   ├── DOCUMENTATION_GUIDELINES.md        # Official documentation suite & rules (LevantC Standard)
+│   ├── CODE_STANDARDS_AND_GUIDELINES.md   # Clean code, mandatory commenting & layer-isolation rules
 │   └── VERSIONING_AND_RELEASE_MANAGEMENT.md # Two-digit semver (1.xx.xx) & commit specifications
 ├── agents/                                # AI Agent guidelines and execution protocols
 │   ├── AGENTS_CONSTITUTION.md             # The binding constitution for all AI agents
@@ -50,6 +51,7 @@ knowledgebase/
 All agents must read the following guides in sequence prior to task execution:
 1. [`architecture/UGARIT_PHILOSOPHY.md`](architecture/UGARIT_PHILOSOPHY.md)
 2. [`architecture/ARTIFACT_DRIVEN_ARCHITECTURE.md`](architecture/ARTIFACT_DRIVEN_ARCHITECTURE.md)
-3. [`architecture/VISION_AND_CORE_IDENTITY.md`](architecture/VISION_AND_CORE_IDENTITY.md)
-4. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)
-5. [`sources/SOURCES_CATALOG.md`](sources/SOURCES_CATALOG.md)
+3. [`architecture/CODE_STANDARDS_AND_GUIDELINES.md`](architecture/CODE_STANDARDS_AND_GUIDELINES.md)
+4. [`architecture/VISION_AND_CORE_IDENTITY.md`](architecture/VISION_AND_CORE_IDENTITY.md)
+5. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)
+6. [`sources/SOURCES_CATALOG.md`](sources/SOURCES_CATALOG.md)
