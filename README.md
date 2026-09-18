@@ -24,7 +24,8 @@ knowledgebase/
 │   ├── ECOSYSTEM_MAP.md                   # Ecosystem topology and package relationships
 │   ├── SOURCES_AND_REFERENCES.md          # Source ingestion guide (LevantC & external refs)
 │   ├── CUSTOMIZATION_PILLARS.md           # Strategic customization roadmap & pillars
-│   └── DOCUMENTATION_GUIDELINES.md        # Official documentation suite & rules (LevantC Standard)
+│   ├── DOCUMENTATION_GUIDELINES.md        # Official documentation suite & rules (LevantC Standard)
+│   └── VERSIONING_AND_RELEASE_MANAGEMENT.md # Two-digit semver (1.xx.xx) & commit specifications
 ├── agents/                                # AI Agent guidelines and execution protocols
 │   ├── AGENTS_CONSTITUTION.md             # The binding constitution for all AI agents
 │   └── INSTRUCTIONS.md                    # Pre-execution workflow & quality gates
