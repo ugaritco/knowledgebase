@@ -20,8 +20,8 @@ knowledgebase/
 ├── LICENSE.md                             # Official MIT License honoring Muath R Abu Ouda
 ├── composer.json                          # Package definition
 ├── architecture/                          # Core architectural documentation
-│   ├── UGARIT_STRATEGY.md                 # The master strategic vision, pillars & execution roadmap
-│   ├── ARTIFACT_DRIVEN_ARCHITECTURE.md    # The soul of Ugarit: Feature-Core, Artifacts & Decoupled Frontend
+│   ├── UGARIT_PHILOSOPHY.md               # The master philosophy: Artifacts provide capabilities, Features define behavior
+│   ├── ARTIFACT_DRIVEN_ARCHITECTURE.md    # Official technical reference for ADA & decoupled frontend
 │   ├── VISION_AND_CORE_IDENTITY.md        # Vision, identity, and strict isolation laws
 │   ├── ECOSYSTEM_MAP.md                   # Ecosystem topology and package relationships
 │   ├── SOURCES_AND_REFERENCES.md          # Source ingestion guide (LevantC & external refs)
@@ -37,19 +37,19 @@ knowledgebase/
 
 ---
 
-## ⚡ Core Principle: Source-Driven Architecture
-1. **Local Blueprint Incubator (`sources/`):**
-   * Reference systems and repositories placed in the `sources/` directory (e.g., `sources/levantc`) serve as **architectural and functional blueprints**.
-   * Additional sources may be dynamically registered via Git clones or documented in `sources/SOURCES_CATALOG.md`.
-2. **Absorb, Adapt, and Elevate:**
-   * AI Agents study data structures, interfaces, and lifecycles from referenced blueprints.
-   * Capabilities are natively re-engineered under `Heritage\...` conventions, ensuring 100% independence from any legacy frameworks.
+## ⚡ Core Principle: Artifacts vs. Features
+> **"Artifacts provide capabilities. Features define behavior."**
+
+1. **Artifacts Provide Capabilities:** Independent technical packages that deliver domain-agnostic capabilities (storage, identity, i18n, attributes).
+2. **Features Define Behavior:** Application-level workflows composing capabilities from one or more Artifacts.
+3. **The Invariant:** `Feature → Artifact` (Allowed). `Artifact ↛ Feature` (Forbidden).
 
 ---
 
 ## 📋 Getting Started for AI Agents
 All agents must read the following guides in sequence prior to task execution:
-1. [`architecture/VISION_AND_CORE_IDENTITY.md`](architecture/VISION_AND_CORE_IDENTITY.md)
-2. [`architecture/SOURCES_AND_REFERENCES.md`](architecture/SOURCES_AND_REFERENCES.md)
-3. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)
-4. [`sources/SOURCES_CATALOG.md`](sources/SOURCES_CATALOG.md)
+1. [`architecture/UGARIT_PHILOSOPHY.md`](architecture/UGARIT_PHILOSOPHY.md)
+2. [`architecture/ARTIFACT_DRIVEN_ARCHITECTURE.md`](architecture/ARTIFACT_DRIVEN_ARCHITECTURE.md)
+3. [`architecture/VISION_AND_CORE_IDENTITY.md`](architecture/VISION_AND_CORE_IDENTITY.md)
+4. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)
+5. [`sources/SOURCES_CATALOG.md`](sources/SOURCES_CATALOG.md)

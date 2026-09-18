@@ -37,10 +37,10 @@ The `README.md` serves as the primary storefront and orientation guide. It must 
    | Layer | Package | Responsibility |
    |---|---|---|
    | **Kernel** | `ugarit/framework` | Core service container and foundation |
-   | **Domain Module** | `ugaritco/<module>` | Domain-specific capabilities |
+   | **Artifact** | `ugaritco/<artifact>` | Autonomous capability package |
    ```
-4. **Core Capabilities:** Bulleted breakdown of existing and planned features.
-5. **Architecture Mapping Table:** Directory-to-layer correspondence (Controllers, DTOs, Services, Repositories, etc.).
+4. **Core Capabilities:** Bulleted breakdown of technical capabilities provided by the Artifact.
+5. **Architecture Mapping Table:** Directory-to-layer correspondence (Controllers, DTOs, Services, Repositories, Outcomes, Signals, etc.).
 6. **Quick Start / Installation:** Minimal commands to require and register the module.
 7. **Standards & Testing:** Reference to code formatting, Pint, Pest test commands, and Conventional Commits.
 8. **Vision Leader & License:** Official attribution to **Muath R Abu Ouda** and MIT license link.
@@ -49,18 +49,19 @@ The `README.md` serves as the primary storefront and orientation guide. It must 
 
 ### B. `ARCHITECTURE.md` Specification
 The `ARCHITECTURE.md` must clearly define the technical blueprint and data flow:
-1. **Foundation Model & Separation:** Explanation of how the module connects to the core application without framework-inside-a-framework bloat.
-2. **Modular Domain Driven Design (DDD) Layers:**
+1. **Foundation Model & Separation:** Explanation of how the artifact connects to the core application without framework-inside-a-framework bloat.
+2. **Artifact-Driven Architecture (ADA) Layers:**
    ```markdown
    | Layer | Responsibility | Rule |
    |---|---|---|
    | **DTOs** | Structured data transfer | Explicit typed input and output shapes |
    | **Repositories** | Persistence abstraction | Map Eloquent to DTOs; never leak raw models past repository boundaries |
-   | **Services / Use Cases** | Business orchestration | Handle domain logic; return standardized Response envelopes |
+   | **Services / Use Cases** | Business orchestration | Handle domain operations; emit Signals; return standardized Outcome envelopes |
    | **Contracts** | Interface abstractions | Explicit shared interfaces in `src/Contracts/` |
    | **Http / Controllers** | HTTP routing & dispatch | Delegate exclusively to Use Cases; zero business rules |
-   | **Responders** | Transport adaptation | Translate use case Response envelopes into JSON, Inertia, or Redirects |
-   | **Responses** | Standardized outcome | Encapsulate data payload, status, and user feedback metadata |
+   | **Responders** | Transport adaptation | Translate Outcome envelopes into JSON, Inertia, CLI, or Redirects |
+   | **Outcomes** | Standardized outcome | Encapsulate data payload, status, and user feedback metadata (replaces Response) |
+   | **Signals** | Domain notifications | Broadcast-ready domain notification of occurrences (replaces Event) |
    | **Actions** | User-facing feedback | Actionable UI descriptors (toasts, alerts, side effects) |
    ```
 3. **Request Flow Pipeline Diagram (Mermaid):**
@@ -68,13 +69,14 @@ The `ARCHITECTURE.md` must clearly define the technical blueprint and data flow:
    HTTP Request
        → Controller
            → UseCaseFactory → UseCase::handle(DTO)
-               → Response (data, toast, result semantics)
+               → Signal::emit(DomainSignal)
+               → Outcome (data, toast, result semantics)
            → ResponderFactory → Responder (JSON | Inertia | Redirect)
        → HTTP Response
    ```
 4. **Repository File Tree:** Complete visual directory tree explaining all namespaces and directories.
-5. **Autoloading & Discovery:** PSR-4 mapping and service provider registration mechanics.
-6. **Scalability Principles:** Horizontal module growth, independent repository versioning, and stable extension points.
+5. **Autoloading & Discovery:** PSR-4 mapping and `art.php` manifest registration mechanics.
+6. **Scalability Principles:** Horizontal artifact growth, independent repository versioning, and stable extension points.
 
 ---
 
