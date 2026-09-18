@@ -27,9 +27,12 @@ This catalog documents all reference sources attached to the Ugarit ecosystem, w
 
 ---
 
-## 2. External Future Sources & References
-External repositories and documentation references may be added below:
+---
 
-| Source Name | URL | Architectural Specialty | Date Added |
+## 3. Official Implemented Ugarit Artifacts (`ugarit-artifacts`)
+Official capability artifacts built on the **Artifact-Driven Architecture (ADA)** and published under the [ugarit-artifacts](https://github.com/ugarit-artifacts) organization:
+
+| Artifact | Repository | Capabilities Provided | Initial Release |
 | :--- | :--- | :--- | :--- |
-| *LevantC Ecosystem* | `https://github.com/levantc` | Foundational reference for modularity & customization | 2026-09-18 |
+| **`i18n`** | `https://github.com/ugarit-artifacts/i18n` | Locales, directionality (RTL/LTR), languages, translatable entity attributes | `v1.00.00` |
+| **`geography`** | `https://github.com/ugarit-artifacts/geography` | Countries, governorates, cities, locations, geospatial coordinates | `v1.00.00` |
