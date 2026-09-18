@@ -1,0 +1,18 @@
+{
+    "name": "ugaritco/knowledgebase",
+    "description": "The Central Architecture Knowledge Base and AI Agent Guide for the Ugarit Ecosystem | قاعدة المعرفة المعمارية المركزية لمنظومة أوغاريت",
+    "keywords": ["ugarit", "knowledgebase", "architecture", "ai-agents", "ecosystem"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muath R Abu Ouda",
+            "email": "muathrabuouda@hotmail.com",
+            "role": "Vision Leader of Ugarit"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
