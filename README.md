@@ -20,6 +20,7 @@ knowledgebase/
 ├── LICENSE.md                             # Official MIT License honoring Muath R Abu Ouda
 ├── composer.json                          # Package definition
 ├── architecture/                          # Core architectural documentation
+│   ├── ARTIFACT_DRIVEN_ARCHITECTURE.md    # The soul of Ugarit: Feature-Core, Artifacts & Decoupled Frontend
 │   ├── VISION_AND_CORE_IDENTITY.md        # Vision, identity, and strict isolation laws
 │   ├── ECOSYSTEM_MAP.md                   # Ecosystem topology and package relationships
 │   ├── SOURCES_AND_REFERENCES.md          # Source ingestion guide (LevantC & external refs)
