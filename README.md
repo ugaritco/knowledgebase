@@ -20,10 +20,10 @@ knowledgebase/
 ├── LICENSE.md                             # Official MIT License honoring Muath R Abu Ouda
 ├── composer.json                          # Package definition
 ├── architecture/                          # Core architectural documentation
-│   ├── 01_VISION_AND_CORE_IDENTITY.md     # Vision, identity, and strict isolation laws
-│   ├── 02_ECOSYSTEM_MAP.md                # Ecosystem topology and package relationships
-│   ├── 03_SOURCES_AND_REFERENCES.md       # Source ingestion guide (LevantC & external refs)
-│   └── 04_CUSTOMIZATION_PILLARS.md        # Strategic customization roadmap & pillars
+│   ├── VISION_AND_CORE_IDENTITY.md        # Vision, identity, and strict isolation laws
+│   ├── ECOSYSTEM_MAP.md                   # Ecosystem topology and package relationships
+│   ├── SOURCES_AND_REFERENCES.md          # Source ingestion guide (LevantC & external refs)
+│   └── CUSTOMIZATION_PILLARS.md           # Strategic customization roadmap & pillars
 ├── agents/                                # AI Agent guidelines and execution protocols
 │   ├── AGENTS_CONSTITUTION.md             # The binding constitution for all AI agents
 │   └── INSTRUCTIONS.md                    # Pre-execution workflow & quality gates
@@ -45,7 +45,7 @@ knowledgebase/
 
 ## 📋 Getting Started for AI Agents
 All agents must read the following guides in sequence prior to task execution:
-1. [`architecture/01_VISION_AND_CORE_IDENTITY.md`](architecture/01_VISION_AND_CORE_IDENTITY.md)
-2. [`architecture/03_SOURCES_AND_REFERENCES.md`](architecture/03_SOURCES_AND_REFERENCES.md)
+1. [`architecture/VISION_AND_CORE_IDENTITY.md`](architecture/VISION_AND_CORE_IDENTITY.md)
+2. [`architecture/SOURCES_AND_REFERENCES.md`](architecture/SOURCES_AND_REFERENCES.md)
 3. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)
 4. [`sources/SOURCES_CATALOG.md`](sources/SOURCES_CATALOG.md)
