@@ -1,51 +1,49 @@
-# دليل المصادر والمراجع المعتمدة (Sources & Reference Blueprints)
+# Sources & Reference Blueprints Guide
 
 > [!IMPORTANT]
-> **قاعدة الاستناد إلى المصادر المرفقة:**
-> يلتزم الوكيل الذكي والمطور بالاعتماد الكامل على المستودعات والمصادر المرفقة داخل مجلد المصادر `sources/` (مثل `sources/levantc`) كمصدر إلهام ومعمارية تصميمية عند بناء وتخصيص قدرات إطار أوغاريت.
+> **Source-Driven Architecture Rule:**
+> AI Agents and developers must rely on reference sources placed in the `sources/` directory (e.g., `sources/levantc`) as architectural and functional blueprints when designing and building custom features for Ugarit.
 
 ---
 
-## 1. فلسفة مجلد المصادر (`sources/`)
-* **المرونة المطلقة:**
-  * مجلد `sources/` هو الحاضنة المخصصة لتجميع الأنظمة، المكتبات، والمعماريات المرجعية.
-  * يمكن للمستخدم إضافة أي مصادر جديدة في أي وقت، إما عن طريق:
-    1. استنساخ مستودعات GitHub مباشرة إلى مجلد `sources/<provider>`.
-    2. إضافة روابط خارجية لمستودعات أو توثيقات في ملف `sources/SOURCES_CATALOG.md`.
-* **مبدأ عدم التبعية المباشرة (Decoupled Inspiration):**
-  * ملفات المصادر في `sources/` تُعامل كمراجع تصميمية (Architectural Blueprints).
-  * لا يتم تضمين كود المصادر كحزم طرف ثالث خارجية بصورة عمياء؛ بل يتم:
-    1. قراءة المعمارية واستخراج الأنماط البرمجية المتميزة.
-    2. إعادة بناء الميزات برمجياً لتتوافق أصلياً مع معمارية أوغاريت (`Heritage\...`).
-    3. صياغة التسميات والمصطلحات البرمجية لتعكس الهوية العربية المستقلة.
+## 1. The `sources/` Directory Philosophy
+* **Dynamic Reference Repository:**
+  * The `sources/` folder serves as a local incubator for reference systems, architectures, and libraries.
+  * New sources can be attached at any time via:
+    1. Direct Git repository clones under `sources/<vendor-or-project>`.
+    2. External URLs and documentation links recorded in `sources/SOURCES_CATALOG.md`.
+* **Decoupled Architectural Ingestion:**
+  * Source code in `sources/` is strictly treated as reference blueprints.
+  * Code is not copied blindly as third-party vendor dependencies; instead:
+    1. The AI Agent inspects design patterns, schemas, interfaces, and lifecycles.
+    2. The capabilities are natively re-engineered to seamlessly fit `Heritage\...` architecture.
+    3. All terminology and code conventions strictly honor Ugarit guidelines and Arabic localization excellence.
 
 ---
 
-## 2. المصدر الأول المعتمد: منظمة `levantc`
-تم سحب كافة مستودعات منظمة `levantc` الـ 14 محلياً داخل المسار [`j:\ugarit\sources\levantc`](file:///j:/ugarit/sources/levantc).
+## 2. Primary Reference Source: `levantc` Organization
+All 14 repositories of the `levantc` GitHub organization have been cloned locally into [`j:\ugarit\sources\levantc`](file:///j:/ugarit/sources/levantc).
 
-تمثل هذه المستودعات المرجع الأساسي في المعمارية الموزعة والموديولية:
-
-| المستودع المرجعي | مجال التخصص المعماري | الهدف من التوطين في أوغاريت |
+| Reference Module | Domain / Specialty | Architectural Target in Ugarit |
 | :--- | :--- | :--- |
-| **`levantc`** | النواة التأسيسية للمنظومة | دراسة معمارية ربط الخدمات والوحدات المدمجة |
-| **`i18n`** و **`i18n-ui`** | التدويل واللغات والترجمة | بناء محرك تدويل عربي فائق الدقة (RTL/LTR، الصرف، الأرقام) |
-| **`identity`** | الهوية والمصادقة وإدارة المستخدمين | بناء نظام أمان وهوية مرن يدعم التعددية والمصادقة المتقدمة |
-| **`storage`** | إدارة التخزين والوسائط | نظام وسائط مرن يدعم التخزين المحلي والسحابي ومعالجة الصور |
-| **`geography`** | البيانات الجغرافية والتقسيمات | محرك بيانات الدول، المدن، والعملات مع دعم كامل للمنطقة العربية |
-| **`classification`** | التصنيفات والوسوم والهياكل الشجرية | محرك تصنيف متعدد الأبعاد (Nested sets, Tags, Taxonomies) |
-| **`attributes`** | الحقول الديناميكية والخصائص (EAV) | إضافة سمات مخصصة لأي موديل دون الحاجة لتعديل الجداول يدوياً |
-| **`content`** | إدارة وتدفق المحتوى | بناء محرك إدارة محتوى مرن ونشر ديناميكي |
-| **`registry`** | السجلات المركزية والمحددات | معمارية تسجيل الخدمات والمكونات ديناميكياً داخل المنظومة |
-| **`versioning`** | إدارة تاريخ وإصدارات المحتوى | تتبع التغييرات والتاريخ واسترجاع الإصدارات السابقة للمحتوى |
-| **`console`** | أدوات ومساعدات سطر الأوامر | تعزيز قدرات أداة `scribe` التفاعلية |
-| **`laravel-starter-kit`** | قوالب الهيكل التأسيسي المدمج | الاستفادة من تجربة البدء السريع وتطوير قوالب أوغاريت |
-| **`documentation`** | التوثيق والشروحات | الاسترشاد بنماذج التوثيق المعماري للمطورين |
+| **`levantc`** | Foundational Core | Modular service binding and extension points |
+| **`i18n`** & **`i18n-ui`** | Internationalization | Comprehensive Arabic-first RTL/LTR linguistic engine and UI |
+| **`identity`** | Identity & Access Management | Granular RBAC, modern authentication, and multi-tenancy |
+| **`storage`** | Media & File Management | Unified media library, transformations, and multi-disk pipelines |
+| **`geography`** | Geo Data & Administrative Units | High-precision global and MENA regions, cities, and currencies |
+| **`classification`** | Taxonomies & Tagging | Multi-level tree categories (nested sets) and polymorphic tags |
+| **`attributes`** | Dynamic Custom Fields (EAV) | Runtime schema extensions using JSON columns and typed attributes |
+| **`content`** | Content Management | Dynamic block-based content publishing and rendering |
+| **`registry`** | Component & Service Registries | Distributed registry patterns for modular extensions |
+| **`versioning`** | Entity Revision History | Audit trails, visual diffs, and point-in-time entity recovery |
+| **`console`** | CLI Helpers | Custom `scribe` console components and commands |
+| **`laravel-starter-kit`** | Scaffolding Template | UX patterns for starter kits and onboarding flows |
+| **`documentation`** | Architectural Docs | Blueprint for developer documentation and API guides |
 
 ---
 
-## 3. بروتوكول الوكيل الذكي عند التعامل مع المصادر (Agent Ingestion Protocol)
-عند تكليف الذكاء الاصطناعي ببناء أو تطوير أي ميزة تخصيص:
-1. **الخطوة الأولى (الفحص):** استعراض المستودع المرجعي المناسب داخل `sources/` وقراءة بنيته وكلاساته.
-2. **الخطوة الثانية (التحليل):** فهم العقود (Interfaces)، السمات (Traits)، الجداول (Migrations)، ومزودات الخدمة (ServiceProviders).
-3. **الخطوة الثالثة (التوطين والترقية):** كتابة الكود داخل مستودعات أوغاريت الرسمية مع الالتزام التام بنواة `Heritage\...` ودستور أوغاريت البرمجي.
+## 3. AI Agent Source Ingestion Protocol
+When assigned to develop or customize an ecosystem feature:
+1. **Explore:** Inspect the relevant blueprint module in `sources/` to understand contracts, traits, migrations, and service providers.
+2. **Analyze:** Extract the architectural essence and database schemas.
+3. **Elevate & Implement:** Build the native Ugarit implementation adhering to `Heritage\...` conventions and the Ugarit Ecosystem Guidelines.

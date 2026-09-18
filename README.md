@@ -1,51 +1,50 @@
-# قاعدة المعرفة المركزية لمنظومة أوغاريت (Ugarit Central Knowledge Base)
+# Ugarit Central Knowledge Base
 
 > [!IMPORTANT]
-> **المرجعية الأولى والمصدر الحصري للحقائق (The Single Source of Truth):**
-> هذا المستودع هو المدخل الأساسي والإلزامي لأي مطور أو وكيل ذكاء اصطناعي (**AI Agent**) يعمل على تطوير أو تخصيص إطار عمل ومنظومة أوغاريت. يُمنع تنفيذ أي كود، تصميم أي معمارية، أو إدخال أي ميزة برمجية قبل مراجعة أدلة هذا المستودع واستيعاب متطلباته بدقة.
+> **The Single Source of Truth for Developers & AI Agents:**
+> This repository serves as the central entry point and architectural compass for all developers and **AI Agents** participating in the development and customization of the Ugarit Ecosystem. No code execution, architectural design, or feature introduction may occur without consulting and strictly aligning with this knowledge base.
 
 ---
 
-## 🏛️ الرؤية والقيادة
-* **قائد الرؤية والمشروع:** الأستاذ **معاذ أبو عودة (Muath R Abu Ouda)**.
-* **الهدف الاستراتيجي:** بناء وتطوير إطار عمل عربي مستقل تماماً، شامل، متكامل، وسلس في تجربة التطوير، يجمع بين القوة والمرونة المعمارية ويدعم المعايير العالمية مع خصوصية متقدمة للغة العربية والمنطقة.
+## 🏛️ Vision & Leadership
+* **Vision Leader:** **Muath R Abu Ouda** (`muathrabuouda@hotmail.com`).
+* **Strategic Objective:** Build and maintain an independent, Arab-led, world-class web application ecosystem that combines developer ergonomics, architectural robustness, and native Arabic-first localization capabilities.
 
 ---
 
-## 🧭 خريطة مستودع قاعدة المعرفة (Repository Map)
+## 🧭 Repository Structure
 
 ```text
 knowledgebase/
-├── README.md                              # الدليل العام ومقدمة المستودع
-├── LICENSE.md                             # رخصة MIT المعتمدة للأستاذ معاذ أبو عودة
-├── composer.json                          # تعريف الحزمة
-├── architecture/                          # أدلة المعمارية والتصميم
-│   ├── 01_VISION_AND_CORE_IDENTITY.md     # الرؤية والهوية والاستقلال البرمجي
-│   ├── 02_ECOSYSTEM_MAP.md                # خريطة المنظومة ومسارات الحزم
-│   ├── 03_SOURCES_AND_REFERENCES.md       # دليل المصادر والمراجع (LevantC والمصادر الخارجية)
-│   └── 04_CUSTOMIZATION_PILLARS.md        # محاور وخطة التخصيص الاستراتيجية
-├── agents/                                # أدلة وتشغيل الوكلاء الأذكياء
-│   ├── AGENTS_CONSTITUTION.md             # دستور وتشغيل الوكلاء الأذكياء
-│   └── INSTRUCTIONS.md                    # بروتوكول التنفيذ المسبق للـ AI
-└── sources/                               # فهرس وتوثيق المصادر المرجعية
-    └── SOURCES_CATALOG.md                 # دليل وفهرس حزم المصادر (مثل levantc)
+├── README.md                              # Central introduction and directory guide
+├── LICENSE.md                             # Official MIT License honoring Muath R Abu Ouda
+├── composer.json                          # Package definition
+├── architecture/                          # Core architectural documentation
+│   ├── 01_VISION_AND_CORE_IDENTITY.md     # Vision, identity, and strict isolation laws
+│   ├── 02_ECOSYSTEM_MAP.md                # Ecosystem topology and package relationships
+│   ├── 03_SOURCES_AND_REFERENCES.md       # Source ingestion guide (LevantC & external refs)
+│   └── 04_CUSTOMIZATION_PILLARS.md        # Strategic customization roadmap & pillars
+├── agents/                                # AI Agent guidelines and execution protocols
+│   ├── AGENTS_CONSTITUTION.md             # The binding constitution for all AI agents
+│   └── INSTRUCTIONS.md                    # Pre-execution workflow & quality gates
+└── sources/                               # Reference sources index
+    └── SOURCES_CATALOG.md                 # Inventory of blueprint packages (LevantC modules)
 ```
 
 ---
 
-## ⚡ المبدأ الذهبي الأول: إدارة المصادر والمراجع الملحقة (Source-Driven Architecture)
-1. **الاعتماد على مجلد المصادر `sources/`:**
-   * أي حزم أو مستودعات مرجعية يتم وضعها تحت مسار `sources/` (مثل `sources/levantc`) تُعد **مراجع معمارية ووظيفية موثوقة**.
-   * يُتاح إضافة مصادر جديدة باستمرار سواء عبر روابط مستودعات GitHub أو روابط توثيق خارجية.
-2. **فلسفة استيعاب المصادر (Absorb, Adapt, Elevate):**
-   * عند الاطلاع على أي مصدر، يقوم الوكيل الذكي بدراسة المنطق البرمجي والهياكل البيانية.
-   * يتم توطين الفكرة وتكييفها فوراً لتنسجم بنسبة 100% مع معمارية أوغاريت (`Heritage\...`) ومبادئ الدستور البرمجي.
-   * لا يتم نسخ أي تبعيات خارجية غير مرخصة أو تتعارض مع هوية واستقلال أوغاريت.
+## ⚡ Core Principle: Source-Driven Architecture
+1. **Local Blueprint Incubator (`sources/`):**
+   * Reference systems and repositories placed in the `sources/` directory (e.g., `sources/levantc`) serve as **architectural and functional blueprints**.
+   * Additional sources may be dynamically registered via Git clones or documented in `sources/SOURCES_CATALOG.md`.
+2. **Absorb, Adapt, and Elevate:**
+   * AI Agents study data structures, interfaces, and lifecycles from referenced blueprints.
+   * Capabilities are natively re-engineered under `Heritage\...` conventions, ensuring 100% independence from any legacy frameworks.
 
 ---
 
-## 📋 للمطورين والوكلاء الأذكياء (Getting Started)
-قبل البدء في أي مهمة، يرجى قراءة الملفات التالية بالتسلسل:
+## 📋 Getting Started for AI Agents
+All agents must read the following guides in sequence prior to task execution:
 1. [`architecture/01_VISION_AND_CORE_IDENTITY.md`](architecture/01_VISION_AND_CORE_IDENTITY.md)
 2. [`architecture/03_SOURCES_AND_REFERENCES.md`](architecture/03_SOURCES_AND_REFERENCES.md)
 3. [`agents/AGENTS_CONSTITUTION.md`](agents/AGENTS_CONSTITUTION.md)

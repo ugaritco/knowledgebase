@@ -1,28 +1,28 @@
-# بروتوكول التنفيذ للوكلاء الأذكياء (Pre-Execution Workflow)
+# Pre-Execution Workflow for AI Agents
 
-لكل مهمة برمجية يقوم بها الذكاء الاصطناعي في بيئة أوغاريت، يجب تطبيق الخطوات الأربع التالية:
+For every coding, customization, or refactoring task, the AI Agent must strictly follow this four-phase lifecycle:
 
 ```mermaid
 flowchart LR
-    A[1. استيعاب المعمارية والمصادر] --> B[2. التخطيط وتحديد المسارات]
-    B --> C[3. كتابة الكود النظيف والمستقل]
-    C --> D[4. الاختبار ودفع الإصدار والمزامنة]
+    A[1. Ingest Specs & Blueprints] --> B[2. Plan & Map Boundaries]
+    B --> C[3. Clean Native Implementation]
+    C --> D[4. Test, Tag, Push & Sync]
 ```
 
-### 1. استيعاب المعمارية والمصادر
-* فحص التوجيهات ذات الصلة في `knowledgebase`.
-* مراجعة مستودعات المصادر المقابلة في `sources/` (مثل حزم `levantc`).
-* التأكد من عدم انتهاك أي قاعدة من قواعد التسميات أو الاستقلال البرمجي.
+### 1. Ingest Specifications & Blueprints
+* Review relevant guidelines in `knowledgebase`.
+* Inspect corresponding blueprint modules in `sources/` (e.g., `sources/levantc/*`).
+* Ensure zero legacy naming or external Laravel dependencies exist in the proposed solution.
 
-### 2. التخطيط
-* تحديد الملفات المستهدفة بالضبط.
-* توضيح التغييرات المعمارية قبل التعديل في حال كانت التعديلات كبرى.
+### 2. Plan & Map Boundaries
+* Accurately identify target repositories, classes, namespaces, and database migrations.
+* Present the architectural roadmap before executing extensive structural changes.
 
-### 3. كتابة الكود النظيف
-* الالتزام التام برخصة MIT وديباجة الملكية الفكرية الرسمية للأستاذ معاذ أبو عودة.
-* توجيه مساحات الأسماء إلى `Heritage\...` وحزم `ugarit/*` أو `ugaritco/*`.
+### 3. Clean Native Implementation
+* Ensure the MIT license notice honoring Vision Leader **Muath R Abu Ouda** is preserved.
+* Target all core classes under `Heritage\...` and packages under `ugarit/*` or `ugaritco/*`.
 
-### 4. الاختبار والتحقق والدفع
-* التحقق من سلامة بناء الكود وخلوه من أخطاء بناء الجملة (Syntax Errors).
-* تشغيل التحليل الساكن واختبارات Pest إن وجدت.
-* تحديث التاج وفق نمط `1.00.00` ودفع التعديلات وتزامنها مع Packagist.
+### 4. Test, Tag, Push & Synchronize
+* Perform syntax checks and run automated Pest tests where applicable.
+* Bump release tags in accordance with the `1.00.00` versioning convention.
+* Push all tracking branches to GitHub and trigger Packagist webhooks/API.

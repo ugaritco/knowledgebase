@@ -1,34 +1,33 @@
-# الرؤية المعمارية وهوية المنظومة (Vision & Core Identity)
+# Architectural Vision & Core Identity
 
-## 1. الهوية والاستقلال البرمجي التام
-* **المنظومة:** إطار أوغاريت (**Ugarit Ecosystem**).
-* **قائد الرؤية:** الأستاذ **معاذ أبو عودة (Muath R Abu Ouda)**.
-* **المرجعية الفلسفية:**
-  * أوغاريت هو إطار عمل عربي مستقل تماماً لتطوير تطبيقات الويب الحديثة.
-  * تم بناؤه وتطويره كعمل مشتق مع الحفاظ التام على حقوق الملكية الفكرية ورخصة MIT.
-  * **يُمنع منعاً باتاً ومطلقاً** سحب أو استدعاء أي حزمة من حزم النظام القديم (`laravel/*` أو `illuminate/*`) من Packagist أو أي مستودع خارجي.
-  * النواة مستقلة تماماً ومبنية تحت المنظمات الرسمية `ugarit` و `ugaritco`.
+## 1. Vision & Complete Architectural Independence
+* **The Ecosystem:** Ugarit Ecosystem (**إطار ومنظومة أوغاريت**).
+* **Vision Leader:** **Muath R Abu Ouda** (`muathrabuouda@hotmail.com`).
+* **Philosophical Foundation:**
+  * Ugarit is an independent, Arabic-first web application framework built and developed as a derivative work from Laravel, maintaining complete compliance with original IP rights and the MIT License.
+  * **Strict Isolation Law:** It is strictly prohibited to pull, require, or import any legacy packages (`laravel/*` or `illuminate/*`) from Packagist or any external repository into the Ugarit ecosystem.
+  * The core framework is completely self-contained under the official GitHub and Packagist organizations `ugarit` and `ugaritco`.
 
 ---
 
-## 2. جدول التحول المعماري والمصطلحات الرسمية
+## 2. Architectural Mapping & Official Terminology
 
-| المفهوم في النظام القديم | المسمى المعتمد والوحيد في أوغاريت | مساحة الأسماء / الرابط |
+| Concept / Component | Official Ugarit Name | Namespace / Details |
 | :--- | :--- | :--- |
-| **Framework Package** | `ugarit/framework` | النواة المركزية للإطار |
-| **Vendor Organizations** | `ugarit` و `ugaritco` | المنظمات الرسمية على GitHub و Packagist |
-| **Core Namespace** | `Heritage\...` | مساحة أسماء كلاسات النواة المركزية |
-| **CLI Tool** | `scribe` | أداة سطر الأوامر (تُستدعى عبر `php scribe`) |
-| **Brand Name** | `Ugarit` / `أوغاريت` | الاسم الرسمي المعتمد للمنظومة |
-| **Application Kernel** | `Heritage\Foundation\Application` | مشغل وموجّه التطبيقات والخدمات |
-| **Testing Engine** | `Pest` عبر `ugaritco/pest-plugin-ugarit` | محرك الاختبارات الأساسي |
-| **Static Analysis** | `ugaritco/ugaritstan` | محرك التحليل الساكن للأنماط والأنواع |
-| **Code Formatter** | `ugarit/pint` | أداة تنسيق وتطهير الكود الموحدة |
+| **Framework Package** | `ugarit/framework` | Official core package |
+| **Vendor Organizations** | `ugarit` & `ugaritco` | Official GitHub & Packagist organizations |
+| **Core Namespace** | `Heritage\...` | Core classes namespace (replaces `Illuminate\...`) |
+| **CLI Tool** | `scribe` | Command line tool invoked via `php scribe` |
+| **Brand Name** | `Ugarit` / `ugarit` | Official ecosystem brand name |
+| **Application Kernel** | `Heritage\Foundation\Application` | Central service orchestrator & router |
+| **Testing Engine** | `Pest` via `ugaritco/pest-plugin-ugarit` | Default test suite runner |
+| **Static Analysis** | `ugaritco/ugaritstan` | Official static analysis tool |
+| **Code Formatter** | `ugarit/pint` | Dedicated isolated code cleaner |
 
 ---
 
-## 3. قواعد الإصدارات والترقيم (`1.00.00`)
-* تبدأ كافة الحزم والمشاريع في أوغاريت من الإصدار الأساسي الموحد: **`v1.00.00`**.
-* نظام الترقيم يعتمد دائماً صيغة الرقمين في الأجزاء الفرعية:
-  `v1.00.01` ➔ `v1.00.02` ➔ `v1.00.03` ... وهكذا.
-* تُحذف أي تاجات موروثة قديمة نهائياً لمنع تضارب مدراء الحزم.
+## 3. Versioning Standard (`1.00.00`)
+* All packages and repositories across the Ugarit ecosystem adhere to the unified versioning format: **`v1.00.00`** (two-digit sub-version format).
+* Incremental progress evolves as:
+  `v1.00.01` ➔ `v1.00.02` ➔ `v1.00.03` ... and so forth.
+* All legacy repository tags (`v5.x`, `v4.x`, etc.) must be permanently purged to avoid Packagist dependency resolution conflicts.

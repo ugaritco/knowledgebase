@@ -1,6 +1,6 @@
-# خريطة المنظومة ومسارات الحزم (Ecosystem Map)
+# Ecosystem Architecture & Repository Map
 
-تتألف منظومة أوغاريت من مجموعة حزم مركزية متكاملة تتوزع في بنية هرمية واضحة:
+The Ugarit ecosystem consists of central packages arranged in a distinct hierarchical architecture:
 
 ```mermaid
 graph TD
@@ -12,28 +12,28 @@ graph TD
     Installer --> StarterKits[Starter Kits <br/> React / Vue / Svelte / Livewire]
     
     CustomModules[Customization Pillars <br/> i18n / Identity / Storage / Geography] --> Kernel
-    ReferenceSources[Sources Catalog <br/> LevantC Modules] -. Reference & Blueprints .-> CustomModules
+    ReferenceSources[Sources Catalog <br/> LevantC Modules] -. Architectural Reference .-> CustomModules
 ```
 
 ---
 
-## 1. الحزم المركزية الأساسية (Core Packages)
+## 1. Core Packages
 * **`ugarit/framework`** (`j:\ugarit\framework`):
-  النواة الشاملة التي تدير الحاويات (Container)، التوجيه (Routing)، قواعد البيانات (Database/ORM)، الأحداث (Events)، والوسائط، وتستخدم مساحة الأسماء `Heritage\...`.
+  The self-contained foundation managing service containers, routing, Eloquent ORM, events, and HTTP lifecycle under the `Heritage\...` namespace.
 * **`ugarit/installer`** (`j:\ugarit\installer`):
-  أداة إنشاء وإعداد تطبيقات أوغاريت الجديدة عبر سطر الأوامر (`ugarit new`).
+  The official CLI tool for scaffolding new Ugarit applications (`ugarit new`).
 * **`ugarit/prompts`** (`j:\ugarit\prompts`):
-  نظام المحثات والواجهات التفاعلية في سطر الأوامر.
+  Interactive terminal prompt engine tailored for beautiful CLI experiences.
 * **`ugarit/boost`** (`j:\ugarit\boost`):
-  محرك دعم وتوجيه الذكاء الاصطناعي ووكلاء البرمجة ومخدمات بروتوكول سياق النموذج (MCP).
+  AI-assisted engineering tool providing guidelines, agent skills, and Model Context Protocol (MCP) servers.
 * **`ugaritco/pest-plugin-ugarit`** (`j:\ugarit\pest-plugin-ugarit`):
-  إضافة إطار Pest لدعم بيئة أوغاريت وتشغيل الاختبارات التلقائية.
+  Pest testing plugin tailored for the Ugarit application architecture.
 
 ---
 
-## 2. قوالب البداية الرسمية (Starter Kits)
-* `react-starter-kit` (و `blank-react-starter-kit`)
-* `vue-starter-kit` (و `blank-vue-starter-kit`)
-* `svelte-starter-kit` (و `blank-svelte-starter-kit`)
-* `livewire-starter-kit` (و `blank-livewire-starter-kit`)
+## 2. Official Starter Kits
+* `react-starter-kit` (and `blank-react-starter-kit`)
+* `vue-starter-kit` (and `blank-vue-starter-kit`)
+* `svelte-starter-kit` (and `blank-svelte-starter-kit`)
+* `livewire-starter-kit` (and `blank-livewire-starter-kit`)
 * `api-starter-kit`
