@@ -16,19 +16,19 @@ ADA organizes system execution in a strict top-to-bottom pipeline:
 graph TD
     Core["1. Core (Host Application Engine)"]
     Artifacts["2. Artifacts (Autonomous Capability Packages)"]
-    Capabilities["3. Capabilities (What the System Can Provide)"]
-    Operations["4. Operations & Services (UseCases & Multi-Operation Composition)"]
-    Features["5. Features (Application & Business Behavior)"]
-    Outcomes["6. Outcomes (Operation Result Envelopes)"]
+    Capabilities["3. Capabilities (Atomic Execution Units)"]
+    Features["4. Features (Workflow Orchestrators)"]
+    Parcels["5. Parcels (Data Envelopes)"]
+    Outcomes["6. Outcomes (Execution Result Envelopes)"]
     Responders["7. Responders (Transport Adapters)"]
     Transport["8. Transport (HTTP / JSON / Inertia / CLI)"]
     Frontend["9. Frontend (Pluggable Starter Kits / Clients)"]
 
     Core --> Artifacts
     Artifacts --> Capabilities
-    Capabilities --> Operations
-    Operations --> Features
+    Capabilities --> Features
     Features --> Outcomes
+    Capabilities --> Outcomes
     Outcomes --> Responders
     Responders --> Transport
     Transport --> Frontend
@@ -41,16 +41,15 @@ graph TD
 2. **Artifacts:**
    Autonomous technical packages residing under `artifacts/<name>/` registered via an `art.php` manifest.
 3. **Capabilities:**
-   The atomic technical abilities provided by Artifacts (e.g., token issuance, image resizing, translation extraction, multi-tenant scoping).
-4. **Operations / Services:**
-   * **Operation (`UseCase`):** A focused, discrete business execution unit with a single responsibility.
-   * **Service:** A composition of multiple operations executing a cohesive multi-step workflow.
-5. **Features:**
-   Application-level business behavior. Features orchestrate one or more Artifact Capabilities to deliver business value.
+   Atomic units of execution responsible for carrying out a single, clearly defined operation (Single Responsibility Principle). Encapsulates persistence, query, mutation, or computational logic.
+4. **Features:**
+   Comprehensive workflow orchestrators that coordinate across multiple atomic Capabilities within or across artifacts, managing database transactions and data flow.
+5. **Parcels:**
+   Strongly-typed, validated data envelopes that travel across system layers, preventing leakage of internal Eloquent model state into domain logic.
 6. **Outcomes:**
-   The standardized result of an operation (replaces the architectural concept of `Response`). An Outcome encapsulates status, data payload, errors, and user feedback metadata (toasts/alerts).
+   The standardized result of domain execution. An Outcome is transport-agnostic and encapsulates result status, payloads, errors, and client feedback metadata.
 7. **Responders:**
-   Boundary translators that convert an agnostic `Outcome` into a specific transport format without altering business logic.
+   Boundary translators that convert an agnostic `Outcome` into a specific transport format (Inertia, JSON, Redirect) tailored to client requirements.
 8. **Transport:**
    The communication wire protocol (HTTP JSON response, Inertia page props, HTTP redirects, or CLI output).
 9. **Frontend:**
@@ -66,33 +65,33 @@ $$\mathbf{Artifact \;\cancel{\longrightarrow}\; Feature}$$
 ```text
 ┌────────────────────────────────────────────────────────┐
 │                        FEATURE                         │
-│             (Application Business Behavior)            │
+│             (Application Workflow Behavior)            │
 │                                                        │
 │   Composes: Identity Capability + i18n Capability      │
 └───────────────────────────┬────────────────────────────┘
                             │
-                            ▼ (Allowed: Feature depends on Artifacts)
+                            ▼ (Allowed: Feature depends on Capabilities)
 ┌────────────────────────────────────────────────────────┐
 │                       ARTIFACT                         │
 │             (Independent Technical Unit)               │
 │                                                        │
-│   Provides: Storage, Identity, i18n, Attributes        │
+│   Provides: Storage, Identity, i18n, Models, Parcels   │
 │                                                        │
-│   ❌ NEVER imports or references Features              │
+│   ❌ NEVER imports or references higher-level Features  │
 └────────────────────────────────────────────────────────┘
 ```
 
-* **Features know Artifacts:** A feature (e.g., "User Onboarding Flow") imports use cases and capabilities from the `identity` artifact, `i18n` artifact, and `storage` artifact.
-* **Artifacts NEVER know Features:** An artifact has zero knowledge of the features that consume it. It exposes contracts, repositories, DTOs, and use cases as reusable capabilities.
+* **Features know Artifact Capabilities:** A feature (e.g., "User Onboarding Flow") imports capabilities from the `identity` artifact, `i18n` artifact, and `storage` artifact.
+* **Artifacts NEVER know Features:** An artifact has zero knowledge of consumer features. It exposes contracts, repositories, parcels, and capabilities as autonomous building blocks.
 
 ---
 
 ## 3. The Zero-Knowledge Principle (Frontend-Backend Decoupling)
 
-* **Backend is Constant:** The domain models, business operations, outcomes, and storage pipelines are immutable across client implementations.
+* **Backend is Constant:** The domain models, capabilities, parcels, outcomes, and storage pipelines are immutable across client implementations.
 * **Frontend is Fluid:** Developers choose any frontend implementation (React, Vue, Svelte, Livewire, Mobile, or CLI).
 * **Zero View Code in Artifacts:** Artifacts **never** contain Blade templates, Inertia components, React/Vue assets, or stylesheets.
-* **Agnostic Outcomes:** UseCases return an **`Outcome`**, which the **`Responder`** maps into whatever the current frontend demands.
+* **Agnostic Outcomes:** Capabilities and Features return an **`Outcome`**, which the **`Responder`** maps into whatever the current frontend demands.
 
 ---
 
@@ -107,22 +106,20 @@ artifacts/<artifact-name>/
 ├── database/
 │   └── migrations/             # Schema definitions and data migrations
 ├── src/
-│   ├── Actions/                # Action & feedback descriptors (toasts, client redirects)
+│   ├── Capabilities/           # Atomic domain operation executors
 │   ├── Contracts/              # Interface boundaries for inter-layer abstraction
-│   ├── DTOs/                   # Immutable typed Data Transfer Objects
-│   ├── Enums/                  # Domain constants and typed state values
-│   ├── Factories/              # UseCase, Service, and Repository resolvers
+│   ├── Enums/                  # Domain constants and typed outcome results
+│   ├── Features/               # Multi-step workflow orchestrators
 │   ├── Http/
-│   │   ├── Controllers/        # Dispatchers only (zero business logic)
-│   │   ├── Requests/           # Input validation and DTO assembly
-│   │   └── Responders/         # Translates Outcomes into transport payloads
+│   │   ├── Controllers/        # Dispatchers only (coordinates run() and respond())
+│   │   └── Requests/           # Input validation and Parcel assembly
 │   ├── Models/                 # Eloquent persistence models (never leaked outside)
 │   ├── Outcomes/               # Standardized operation outcome envelopes
+│   ├── Parcels/                # Strongly-typed data envelopes
+│   ├── Policies/               # Authorization policies
 │   ├── Providers/              # Service providers registering artifact capabilities
-│   ├── Repositories/           # Data source boundary; Eloquent-to-DTO mapping
-│   ├── Services/               # Composite services & focused UseCases (Operations)
-│   ├── Signals/                # System notification events (Signals)
-│   └── Traits/                 # Shared internal reusable behaviors
+│   ├── Repositories/           # Data source boundary mapping Models to Parcels
+│   └── Rules/                  # Custom domain validation rules
 └── tests/                      # Dedicated Pest test suite
 ```
 
@@ -132,15 +129,14 @@ artifacts/<artifact-name>/
 
 | Layer | Type | Invariant & Responsibility |
 | :--- | :--- | :--- |
-| **`Controller`** | Dispatcher | Accepts HTTP input, triggers validation, instantiates a DTO, executes a UseCase/Service, and passes the **Outcome** to a **Responder**. **Zero business rules.** |
-| **`DTO`** | Data Container | Strongly typed, immutable data structures representing explicit input and output shapes. |
-| **`UseCase`** | Operation | Encapsulates a single focused business operation. Accepts a DTO, interacts with Repositories via Contracts, emits **Signals**, and returns an **Outcome**. |
-| **`Service`** | Composition | Coordinates multiple UseCases or complex multi-step domain workflows. |
-| **`Repository`** | Data Boundary | Mediates between domain logic and persistence. Maps Models to DTOs. **Never leaks Eloquent Models beyond the repository layer.** |
+| **`Controller`** | Dispatcher | Accepts HTTP input, triggers request validation, maps to Parcel, executes Capability/Feature via `run()`, and transforms **Outcome** into **Response** via `respond()`. **Zero business logic.** |
+| **`Parcel`** | Data Envelope | Strongly typed, immutable data structures representing explicit input and output shapes across boundaries. |
+| **`Capability`** | Atomic Execution | Encapsulates a single focused business operation. Accepts a Parcel, interacts with Repositories via Contracts, and returns an **Outcome**. |
+| **`Feature`** | Workflow Orchestrator | Coordinates multiple Capabilities or complex multi-step domain workflows within database transactions. |
+| **`Repository`** | Data Boundary | Mediates between domain logic and persistence. Maps Models to Parcels. **Never leaks Eloquent Models beyond the repository layer.** |
 | **`Model`** | Persistence | Eloquent active record entities. Strictly encapsulated within the artifact's repository layer. |
-| **`Signal`** | Notification | Replaces the architectural concept of `Event`. Broadcast-ready notification that an operation completed or a domain state changed. |
-| **`Outcome`** | Envelope | Replaces the architectural concept of `Response`. Contains status (`success`, `failed`, `validation_error`), data payload, and client action descriptors. |
-| **`Responder`** | Adapter | Formats the **Outcome** into transport representations: JSON, Inertia page props, CLI terminal tables, or HTTP redirects. |
+| **`Outcome`** | Result Envelope | Standardized execution outcome. Contains status (`success`, `failed`, `validation_error`), data payload, and flash metadata. |
+| **`Responder`** | Transport Adapter | Formats the **Outcome** into transport representations: JSON, Inertia page props, or HTTP redirects. |
 | **`Contract`** | Interface | Defines public contracts for mockability, decoupling, and dependency injection. |
 
 ---
@@ -152,29 +148,27 @@ sequenceDiagram
     autonumber
     actor Client as Frontend (React / Vue / Svelte / API)
     participant Ctrl as Controller
-    participant DTO as Input DTO
-    participant UC as UseCase (Operation)
+    participant Parcel as Input Parcel
+    participant Cap as Capability / Feature
     participant Repo as Repository (Data Boundary)
     participant DB as Database (Model)
-    participant Sig as Signal (Event)
     participant Out as Outcome (Result Envelope)
     participant Resp as Responder
 
     Client->>Ctrl: Request (HTTP / Payload)
-    Ctrl->>DTO: Assemble Validated DTO
-    Ctrl->>UC: handle(InputDTO)
-    Note over UC: Executes Focused Business Logic
-    UC->>Repo: findByCriteria(CriteriaDTO)
-    Repo->>DB: Eloquent Model Query
-    DB-->>Repo: Model Record(s)
-    Note over Repo: Maps Model(s) to OutputDTO
-    Repo-->>UC: OutputDTO
-    UC->>Sig: emit(EntityCreatedSignal)
-    Note over UC: Assembles Outcome Envelope
-    UC-->>Ctrl: Outcome(status: success, data: OutputDTO)
-    Ctrl->>Resp: format(Outcome)
-    Note over Resp: Converts Outcome into Transport Payload
-    Resp-->>Client: Transport Response (JSON / Inertia / Redirect)
+    Ctrl->>Parcel: Assemble Validated Parcel from Request
+    Ctrl->>Cap: handle(InputParcel)
+    Note over Cap: Executes Atomic Business Logic / Workflow
+    Cap->>Repo: save(InputParcel)
+    Repo->>DB: Persist Eloquent Model
+    DB-->>Repo: Refreshed Model Record
+    Note over Repo: Maps Model to Fresh Parcel
+    Repo-->>Cap: Fresh Parcel
+    Note over Cap: Assembles Outcome Envelope
+    Cap-->>Ctrl: Outcome(status: success, data: FreshParcel)
+    Ctrl->>Resp: respond(Outcome)
+    Note over Resp: Converts Outcome into Transport Representation
+    Resp-->>Client: Final Response (Inertia / JSON / Redirect)
 ```
 
 ---
